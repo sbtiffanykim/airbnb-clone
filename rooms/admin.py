@@ -37,7 +37,7 @@ class RoomAdmin(admin.ModelAdmin):
             "More About the Spaces",
             {
                 "classes": ("collapse",),
-                "fields": ("amenities", "faciliies", "house_rules"),
+                "fields": ("amenities", "facilities", "house_rules"),
             },
         ),
         ("Last Details", {"fields": ("host",)}),
@@ -65,7 +65,7 @@ class RoomAdmin(admin.ModelAdmin):
         "host__superhost",
         "room_type",
         "amenities",
-        "faciliies",
+        "facilities",
         "house_rules",
         "city",
         "country",
@@ -75,7 +75,7 @@ class RoomAdmin(admin.ModelAdmin):
 
     filter_horizontal = (
         "amenities",
-        "faciliies",
+        "facilities",
         "house_rules",
     )
 
@@ -87,6 +87,8 @@ class RoomAdmin(admin.ModelAdmin):
     def count_photos(self, obj):
         return obj.photos.count()
 
+    count_photos.short_description = "Photo Count"
+
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
@@ -96,6 +98,6 @@ class PhotoAdmin(admin.ModelAdmin):
     list_display = ("__str__", "get_thumnail")
 
     def get_thumnail(self, obj):
-        return mark_sat(f'<img width="50px" src="{obj.file.url}" />')
+        return mark_safe(f'<img width="50px" src="{obj.file.url}" />')
 
     get_thumnail.short_description = "Thumnail"
