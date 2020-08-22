@@ -138,4 +138,5 @@ dmypy.json
 cython_debug/
 
 # uploaded pictures
-uploads
+uploads/
+node_modules/
