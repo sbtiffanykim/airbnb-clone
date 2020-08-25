@@ -13,17 +13,10 @@
 
     <div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
         
-        <form method="POST" action="{% url "users:signup" %}">
-            {% csrf_token %}
-            {{form.first_name}}
-            {{form.last_name}}
-            {{form.email}}
-            {{form.password}}
-            {{form.c_password}}
-            <button class="btn bg-red-500 text-white text-semibold">Sign up</button>
-        </form>
+        {% include "mixins/auth/auth_form.html" with form=form cta="Sign up" %}
         
         {% include "partials/social_login.html" %}
+        
         <div class="mt-5">
             <span>Have an account?</span>
             <a href="{% url 'users:login' %}" class="text-teal-500 text-semibold ml-2">Log in</a>
