@@ -20,6 +20,7 @@ class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
                     "language",
                     "currency",
                     "superhost",
+                    "login_method",
                 )
             },
         ),

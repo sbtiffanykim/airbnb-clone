@@ -10,16 +10,15 @@
 
 {% block content %}
 
-<div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
-    {% include "mixins/auth/auth_form.html" with form=form cta="Log in"%}
+    <div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
+        {% include "mixins/auth/auth_form.html" with form=form cta="Log in"%}
 
-    {% include "partials/social_login.html" %}
+        {% include "partials/social_login.html" %}
 
-    <div class="mt-5">
-        <span>Don't have an account?</span>
-        <a href="{% url 'users:signup' %}" class="text-teal-500 text-semibold ml-2">Sign up</a>
+        <div class="mt-5">
+            <span>Don't have an account?</span>
+            <a href="{% url 'users:signup' %}" class="text-teal-500 text-semibold ml-2">Sign up</a>
+        </div>
     </div>
-</div>
-
 
 {% endblock content %}
