@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Delete Room
+{% endblock page_title %}
+
+{% block search_bar %}
+
+{% endblock search_bar %}
+
+{% block content %}
+
+    <div class="container mx-auto border border-gray-400 h-75vh p-20">
+        <div class="mx-auto h-64 w-64 bg-center bg-cover" style="background-image: url({{room.get_first_photo}});"></div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="text-center mt-10 mb-16 text-lg font-medium">
+                Are you sure you want to delete 
+                <span class="font-bold text-red-700">{{room.name}}</span>?
+            </div>
+            <div class="flex justify-center">
+                <button class="w-1/6 btn-link bg-teal-400 mr-2">Confirm</button>
+                <a href="{% url 'rooms:detail' room.pk %}" class="w-1/6 btn-link">Cancel</button>
+            </div>
+        </form>
+        
+    </div>
+
+    <!-- <div class="container flex flex-col content-center mx-auto mt-10 h-75vh border border-gray-400 ">
+
+        <div class="mt-10 rounded-sm h-64 w-64 bg-cover bg-center" style="background-image:url({{room.get_first_photo}})"></div>
+        
+        <form method="post" class="flex">
+            {% csrf_token %}
+            <span class="text-lg font-bold">Are you sure you want to delete "{{room.name}}"?</span>
+            
+            <div class="flex justify-between">
+                <button class="btn-link">Confirm</button>
+                <a href="{% url 'rooms:detail' room.pk %}" class="btn-link bg-teal-500">Cancel</a>
+            </div>
+        </form>
+        
+    </div> -->
+
+{% endblock content %}

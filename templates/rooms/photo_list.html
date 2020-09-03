@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{room.name}}'s Photos
+{% endblock page_title %}
+
+{% block search_bar %}
+
+{% endblock search_bar %}
+
+{% block content %}
+
+    <div class="container mx-auto my-10 flex flex-col">
+        <div class="mt-4 w-full">
+            <a href="{{room.get_absolute_url}}" class="btn-link w-1/12 block bg-teal-400">
+                <i class="fas fa-chevron-left text-sm mr-1"></i>
+                <span class="font-medium ">Go Back</span>
+            </a>
+        </div>
+
+        <!-- <h4 class="text-center font-bold text-xl">{{room.name}}</h4> -->
+
+        <div class="mb-4 flex justify-center mx-auto container">
+            {% if photos.has_previous %}
+                <a href="?page={{photos.previous_page_number}}" >
+                    <i class="fas fa-arrow-left fa-lg mr-3 text-gray-800"></i>
+                </a>
+            {% endif %}
+
+            <span class="text-gray-800 text-md">{{photos.number}} of {{photos.paginator.num_pages}}</span>
+    
+            {% if photos.has_next %}
+                <a href="?page={{photos.next_page_number}}">
+                    <i class="fas fa-arrow-right fa-lg ml-3 text-gray-800"></i>
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="mx-auto w-auto relative">
+            {% for photo in photos %}
+                <img src="{{photo.file.url}}" class="w-auto h-75vh bg-cover"/>
+                <div class="absolute bottom-0 right-0 left-0 z-0 w-auto h-8 bg-gray-700 opacity-75">
+                    <span class="text-white p-2 font-medium">{{photo.caption}}</span>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock content %}

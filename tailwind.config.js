@@ -13,8 +13,14 @@ module.exports = {
       borderRadius: {
         xl: "1.5rem",
       },
+      backgroundSize: {
+        "1/2": "50%",
+      },
     },
   },
-  variants: {},
+  variants: {
+    backgroundColor: ["responsive", "hover", "focus", "active"],
+    backgroundSize: ["responsive", "hover", "focus", "active"],
+  },
   plugins: [],
 };
